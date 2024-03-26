@@ -1,2 +1,2 @@
 # design_pattern
-Design pattern hands on with rust
+Design pattern hands on with rust.
