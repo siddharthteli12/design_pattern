@@ -111,7 +111,7 @@ pub struct Sandwich {
 }
 
 impl Sandwich {
-    pub fn  builder() -> SandwichBuilder {
+    pub fn builder() -> SandwichBuilder {
         SandwichBuilder::new()
     }
 }
