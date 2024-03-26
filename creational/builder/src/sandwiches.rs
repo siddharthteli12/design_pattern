@@ -22,13 +22,13 @@ pub enum Meat {
     Fish,
 }
 #[derive(Clone)]
-pub enum Vegetables {
+pub enum Vegetable {
     Tomato,
     Onion,
     Corn,
 }
 #[derive(Clone)]
-pub enum Condiments {
+pub enum Condiment {
     Pepper,
     Olive,
     Honey,
@@ -40,8 +40,8 @@ pub struct Sandwich {
     sauce: Option<Vec<Sauce>>,
     cheese: Option<Vec<Cheese>>,
     meat: Option<Vec<Meat>>,
-    vegetables: Option<Vec<Vegetables>>,
-    condiments: Option<Vec<Condiments>>,
+    vegetable: Option<Vec<Vegetable>>,
+    condiment: Option<Vec<Condiment>>,
 }
 
 impl Sandwich {
@@ -51,61 +51,38 @@ impl Sandwich {
             sauce: None,
             cheese: None,
             meat: None,
-            vegetables: None,
-            condiments: None,
+            vegetable: None,
+            condiment: None,
         }
     }
-    pub fn add_bread(&mut self, breads: Vec<Bread>) -> &mut Self {
-        if let None = self.bread {
-            self.bread = Some(breads);
-        } else {
-            panic!("Already bread is added");
-        }
+
+    pub fn add_bread(&mut self, bread: Vec<Bread>) -> &mut Self {
+        self.bread.get_or_insert(bread);
         self
     }
 
-    pub fn add_sauce(&mut self, sauces: Vec<Sauce>) -> &mut Self {
-        if let None = self.sauce {
-            self.sauce = Some(sauces);
-        } else {
-            panic!("Already sauce is added");
-        }
+    pub fn add_sauce(&mut self, sauce: Vec<Sauce>) -> &mut Self {
+        self.sauce.get_or_insert(sauce);
         self
     }
 
     pub fn add_cheese(&mut self, cheese: Vec<Cheese>) -> &mut Self {
-        if let None = self.cheese {
-            self.cheese = Some(cheese);
-        } else {
-            panic!("Already cheese is added");
-        }
+        self.cheese.get_or_insert(cheese);
         self
     }
 
     pub fn add_meat(&mut self, meat: Vec<Meat>) -> &mut Self {
-        if let None = self.meat {
-            self.meat = Some(meat);
-        } else {
-            panic!("Already meat is added");
-        }
+        self.meat.get_or_insert(meat);
         self
     }
 
-    pub fn add_vegetables(&mut self, vegetables: Vec<Vegetables>) -> &mut Self {
-        if let None = self.vegetables {
-            self.vegetables = Some(vegetables);
-        } else {
-            panic!("Already vegetables is added");
-        }
+    pub fn add_vegetables(&mut self, vegetable: Vec<Vegetable>) -> &mut Self {
+        self.vegetable.get_or_insert(vegetable);
         self
     }
 
-    pub fn add_condiments(&mut self, condiments: Vec<Condiments>) -> &mut Self {
-        if let None = self.condiments {
-            self.condiments = Some(condiments);
-        } else {
-            panic!("Already condiments is added");
-        }
+    pub fn add_condiments(&mut self, condiment: Vec<Condiment>) -> &mut Self {
+        self.condiment.get_or_insert(condiment);
         self
     }
 
